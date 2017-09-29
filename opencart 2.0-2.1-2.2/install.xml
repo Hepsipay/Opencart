@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+    <name>Hepsipay</name>
+    <version>1.0</version>
+    <author>Hepsipay</author>
+    <code>Hepsipay</code>
+    <link>http://www.hepsipay.com</link>
+
+    <file path="admin/language/en-gb/common/menu.php">
+        <operation>
+            <search><![CDATA[$_['text_order']]]></search>
+            <add position="before"><![CDATA[
+                $_['text_hepsipay_history'] =    'Hepsipay history';
+            ]]></add>
+        </operation>
+    </file>
+
+    <file path="admin/language/english/common/menu.php">
+        <operation>
+            <search><![CDATA[$_['text_order']]]></search>
+            <add position="before"><![CDATA[
+                $_['text_hepsipay_history'] =    'Hepsipay history';
+            ]]></add>
+        </operation>
+    </file>
+    <file path="admin/controller/common/menu.php">
+        <operation>
+            <search><![CDATA[$data['text_order']]]></search>
+            <add position="before"><![CDATA[
+                $data['text_hepsipay_history'] = $this->language->get('text_hepsipay_history');
+                $data['hepsipay_history'] = $this->url->link('sale/hepsipay', 'token=' . $this->session->data['token'], 'SSL');
+            ]]></add>
+        </operation>
+    </file>
+    <file path="admin/view/template/common/menu.tpl">
+        <operation>
+            <search><![CDATA[<?php echo $text_order; ?></a></li>]]></search>
+            <add position="after"><![CDATA[
+                <li><a href="<?php echo $hepsipay_history; ?>"><?php echo $text_hepsipay_history; ?></a></li>
+            ]]></add>
+        </operation>
+    </file>
+</modification>
